@@ -1,5 +1,4 @@
 #include "helper.h"
-#include <time.h>
 #include  "leetcode_001_two_sum.c"
 
 int assertTwoSum(char * expect, char * array, int target);
