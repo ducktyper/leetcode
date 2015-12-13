@@ -1,4 +1,7 @@
 # Solutions in C
 
-## leetcode_001_two_sum.c
-  gcc -Wall helper.c leetcode_001_two_sum_test.c && ./a.out
+## Run test
+run leetcode_001_two_sum_test.c
+  sh test.sh 001
+run leetcode_001_two_sum_test.c with benchmark (how many runs in 2 seconds)
+  sh test.sh 001 -b
