@@ -5,11 +5,13 @@
 
 #define assertInt(a, b) (helperAssertInt(a, b) || helperPrint(__FILE__, __LINE__))
 #define assertDouble(a, b) (helperAssertDouble(a, b) || helperPrint(__FILE__, __LINE__))
+#define assertLong(a, b) (helperAssertLong(a, b) || helperPrint(__FILE__, __LINE__))
 #define assertString(a, b) (helperAssertString(a, b) || helperPrint(__FILE__, __LINE__))
 #define assertIntArray(a, b) (helperAssertIntArray(a, b) || helperPrint(__FILE__, __LINE__))
 
 /* Primitive data */
 int helperAssertInt(int expect, int actual);
+int helperAssertLong(long expect, long actual);
 int helperAssertDouble(double expect, double actual);
 int helperAssertString(char * expect, char * actual);
 

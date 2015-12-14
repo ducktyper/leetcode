@@ -13,6 +13,13 @@ int helperAssertInt(int expect, int actual)
     return 0;
 }
 
+int helperAssertLong(long expect, long actual)
+{
+    if (expect == actual) return helperPrintSuccess();
+    printf("\nExpected: %li\n  Actual: %li\n", expect, actual);
+    return 0;
+}
+
 int helperAssertDouble(double expect, double actual)
 {
     if (expect == actual) return helperPrintSuccess();

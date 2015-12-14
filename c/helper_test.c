@@ -8,6 +8,9 @@ int main()
     assertDouble(2.0, 2.0);
     assertDouble(2.0, 2.1);               /* fail */
 
+    assertLong(2, 2);
+    assertLong(2, 3);                     /* fail */
+
     assertString("aa", "aa");
     assertString("aa", "bb");             /* fail */
 
