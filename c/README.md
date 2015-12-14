@@ -1,6 +1,6 @@
-# Solutions in C
+## Solutions in C
 
-## Run test
+### Run test
 Execute test.sh with problem number to run test.
 
 e.g. Run leetcode_001_two_sum_test.c having 5 assertions
