@@ -8,6 +8,7 @@
 int* twoSum(int* nums, int numsSize, int target) {
     int hash = 10000, bucket = 10;
     int* records  = (int *) calloc(hash * bucket, sizeof(int));
+    int* out = NULL;
     for (int i = 0; i < numsSize; i++)
     {
         int need = target - nums[i];
@@ -17,12 +18,13 @@ int* twoSum(int* nums, int numsSize, int target) {
             if (!sub[j]) break;
             if (nums[sub[j] - 1] == need)
             {
-                int* out = (int *) calloc(2, sizeof(int));
+                out = (int *) calloc(2, sizeof(int));
                 out[0] = sub[j];
                 out[1] = i + 1;
-                return out;
+                break;
             }
         }
+        if (out) break;
         sub = &records[abs(nums[i] % hash) * bucket];
         for (int j = 0; j < bucket; j++)
         {
@@ -33,5 +35,6 @@ int* twoSum(int* nums, int numsSize, int target) {
             }
         }
     }
-    return NULL;
+    free(records);
+    return out;
 }
