@@ -14,6 +14,10 @@ int main()
     assertString("aa", "aa");
     assertString("aa", "bb");             /* fail */
 
+    assertInt(0, countArrayInString("[]"));
+    assertInt(1, countArrayInString("[1]"));
+    assertInt(2, countArrayInString("[1,2]"));
+
     int * array1 = stringToIntArray("[1,2,-3]");
     char * array1String = intArrayToString(array1, 3);
     assertIntArray(array1String, array1);

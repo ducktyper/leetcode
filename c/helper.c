@@ -36,7 +36,7 @@ int helperAssertString(char * expect, char * actual)
 
 int countArrayInString(char * array)
 {
-    if (!*array) return 0;
+    if (strcmp(array, "[]") == 0) return 0;
     int size = 1;
     while (*array)
     {
