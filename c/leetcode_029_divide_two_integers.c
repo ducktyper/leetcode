@@ -1,8 +1,9 @@
 int divide(int dividend, int divisor) {
+    if (dividend == INT_MIN && divisor == -1) return INT_MAX;
+
     int minus = (dividend ^ divisor) < 0;
     if (dividend > 0) dividend = -dividend;
     if (divisor  > 0) divisor  = -divisor;
-    if (dividend == INT_MIN && divisor == -1 && !minus) return INT_MAX;
 
     int to = 0;
     while ((divisor << 1) < 0 && (divisor << 1) >= dividend)
@@ -18,6 +19,7 @@ int divide(int dividend, int divisor) {
         {
             dividend -= divisor;
             out += 1 << i;
+            if (!dividend) break;
         }
         divisor >>= 1;
     }
