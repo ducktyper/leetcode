@@ -107,6 +107,30 @@ char * intArrayToString(int * array, int size)
     return out;
 }
 
+char * intArrayOfArrayToString(int ** array, int arraySize, int arrayInSize)
+{
+    int size = 3 + arraySize - 1;
+    char * numsOfNums[arraySize];
+    for (int i = 0; i < arraySize; i++)
+    {
+        numsOfNums[i] = intArrayToString(array[i], arrayInSize);
+        size += strlen(numsOfNums[i]);
+    }
+    char * out = (char *)malloc(sizeof(char) * size);
+    int j = 0;
+    out[j++] = '[';
+    for (int i = 0; i < arraySize; i++)
+    {
+        strcpy(&out[j], numsOfNums[i]);
+        j += strlen(numsOfNums[i]);
+        free(numsOfNums[i]);
+        if (i + 1 < arraySize) out[j++] = ',';
+    }
+    out[j++] = ']';
+    out[j++] = '\0';
+    return out;
+}
+
 int helperAssertIntArray(char * expect, int * actual)
 {
     int size = countArrayInString(expect);

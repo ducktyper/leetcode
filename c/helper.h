@@ -20,6 +20,7 @@ int helperAssertString(char * expect, char * actual);
 int countArrayInString(char * array); /* [1,2] => 2 */
 int * stringToIntArray(char * string);
 char * intArrayToString(int * array, int size);
+char * intArrayOfArrayToString(int ** array, int arraySize, int arrayInSize);
 int helperAssertIntArray(char * expect, int * actual);
 
 /* Other */

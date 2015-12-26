@@ -16,3 +16,8 @@ sh test.sh 001 -b
 .....
 Benchmark: 225 runs in 2 seconds
 ```
+
+e.g. Test helper.c
+```
+sh test.sh helper
+```
