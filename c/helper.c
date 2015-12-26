@@ -46,6 +46,22 @@ int countArrayInString(char * array)
     return size;
 }
 
+int countArrayOfArrayInString(char * array)
+{
+    if (strcmp(array, "[]") == 0) return 0;
+    int size = 1;
+    int ignore = 0;
+    array++;
+    while (*array)
+    {
+        if      (*array == '[') ignore = 1;
+        else if (*array == ']') ignore = 0;
+        else if (*array == ',' && !ignore) size ++;
+        array++;
+    }
+    return size;
+}
+
 int * stringToIntArray(char * string)
 {
     if (strlen(string) == 2) return NULL;
