@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$1" = "helper" ]; then
+  gcc -Wall helper.c helper_test.c && ./a.out
+  exit 0
+fi
+
 file=$(find leetcode_$1*_test.c | head -n1)
 if [ -z "$file" ]; then
     exit 1
