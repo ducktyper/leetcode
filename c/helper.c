@@ -98,6 +98,44 @@ int * stringToIntArray(char * string)
     return out;
 }
 
+char ** stringToStringArray(char * string)
+{
+    if (strlen(string) == 2) return NULL;
+    int size = countArrayInString(string);
+    char ** out = (char **)malloc(sizeof(char **) * size);
+    char tmp[15];
+    int i = 0, j = 0;
+    if (string[0] != '[' || string[strlen(string) - 1] != ']')
+    {
+        printf("\"%s\" is not string array string (e.g. \"[a,b]\")", string);
+        exit(1);
+    }
+    string++;
+    while (*string)
+    {
+        if (*string == ',' || *string == ']')
+        {
+            tmp[i] = '\0';
+            char * str = malloc(sizeof(char) * (i + 1));
+            memcpy(str, tmp, sizeof(char) * (i + 1));
+            out[j++] = str;
+            i = 0;
+        }
+        else
+        {
+            if (i >= 15)
+            {
+                printf("'%s' contains an string having more than 15 chars", string);
+                exit(1);
+            }
+            tmp[i] = *string;
+            i++;
+        }
+        string++;
+    }
+    return out;
+}
+
 char * intArrayToString(int * array, int size)
 {
     char nums[size * 15];
@@ -145,6 +183,30 @@ char * intArrayOfArrayToString(int ** array, int arraySize, int arrayInSize)
     out[j++] = ']';
     out[j++] = '\0';
     return out;
+}
+
+char * stringArrayToString(char ** array, int size)
+{
+    int length = (size ? size : 1) + 2;
+    for (int i = 0; i < size; i++) length += strlen(array[i]);
+    char * out = (char *)malloc(sizeof(char) * length);
+    int p = 1;
+    for (int i = 0; i < size; i++)
+    {
+        strcpy(&out[p], array[i]);
+        p += strlen(array[i]);
+        out[p++] = ',';
+    }
+    out[0] = '[';
+    out[length - 2] = ']';
+    out[length - 1] = '\0';
+    return out;
+}
+
+void freeStringArray(char ** array, int size)
+{
+    for (int i = 0; i < size; i++) free(array[i]);
+    free(array);
 }
 
 int helperAssertIntArray(char * expect, int * actual)

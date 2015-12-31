@@ -27,8 +27,12 @@ int main()
     assertIntArray(array1String, array1);
     printf("\nExpected fail at line 29");
     assertIntArray("[1,2,-3,5]", array1);
+    char ** stringArray1 = stringToStringArray("[a,b]");
+    char * stringArray1string = stringArrayToString(stringArray1, 2);
+    assertString("[a,b]", stringArray1string);
     free(array1);
     free(array1String);
+    freeStringArray(stringArray1, 2);
 
     int array2Sub1[3] = {1,2,-3};
     int array2Sub2[3] = {10,20,30};
