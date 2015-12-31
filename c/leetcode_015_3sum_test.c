@@ -10,6 +10,7 @@ int main()
     assert(assertThreeSum("[[-1,0,1]]", "[1,0,-1]"));
     assert(assertThreeSum("[]", "[1,2,-2,-1]"));
     assert(assertThreeSum("[[-2,0,2],[-2,1,1]]", "[-2,0,1,1,2]"));
+    assert(assertThreeSum("[[-1,0,1]]", "[1,-1,-1,0]"));
     assert(assertThreeSum("[[-2,-1,3],[-1,0,1],[0,0,0]]", "[-1,0,0,1,-2,3,0]"));
 }
 
