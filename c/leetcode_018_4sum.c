@@ -25,8 +25,8 @@ int** fourSum(int* nums, int numsSize, int target, int* returnSize) {
             if (l > i + 1 && ns[l] == ns[l - 1]) continue;
             int j = l + 1, k = numsSize - 1;
 
-            if (ns[i] + ns[l] + ns[k - 1] + ns[k] < target ||
-                ns[i] + ns[l] + ns[j] + ns[j + 1] > target) continue;
+            if (ns[i] + ns[l] + ns[j] + ns[j + 1] > target) break;
+            if (ns[i] + ns[l] + ns[k - 1] + ns[k] < target) continue;
 
             while (j < k)
             {
