@@ -224,6 +224,53 @@ int helperAssertIntArray(char * expect, int * actual)
     return status;
 }
 
+struct ListNode * stringToListNode(char * arrayString)
+{
+    int * array   = stringToIntArray(arrayString);
+    int arraySize = countArrayInString(arrayString);
+
+    struct ListNode base = {0, NULL};
+    struct ListNode * prev = &base;
+    for(int i = 0; i < arraySize; i++)
+    {
+        struct ListNode * node = malloc(sizeof(struct ListNode));
+        node -> val  = array[i];
+        node -> next = NULL;
+        prev -> next = node;
+        prev = node;
+    }
+
+    free(array);
+    return base.next;
+}
+
+char * listNodeToString(struct ListNode * head)
+{
+    int size = 0;
+    struct ListNode * node = head;
+    while(node != NULL) { size++; node = node -> next; }
+
+    int intArray[size];
+    int * p = intArray;
+    node = head;
+    while (node != NULL)
+    {
+        *(p++) = node -> val;
+        node   = node -> next;
+    }
+    return intArrayToString(intArray, size);
+}
+
+void freeListNode(struct ListNode * node)
+{
+    while (node)
+    {
+        struct ListNode * current = node;
+        node = node -> next;
+        free(current);
+    }
+}
+
 int helperPrint(char * file, int line)
 {
     printf("Assertion failed at %s:%d\n", file, line);

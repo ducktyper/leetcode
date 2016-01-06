@@ -40,8 +40,13 @@ int main()
     char * array2String = intArrayOfArrayToString((int **) array2, 2, 3);
     assertString("[[1,2,-3],[10,20,30]]", array2String);
     assertInt(2, countArrayOfArrayInString(array2String));
-    printf("\nExpected fail at line 39");
+    printf("\nExpected fail at line 44");
     assertString("[[1,2,3],[10,20,30]]", array2String);
     free(array2String);
+
+    struct ListNode * node3 = stringToListNode("[1,2,3]");
+    char * node3String = listNodeToString(node3);
+    assertString("[1,2,3]", node3String);
+    freeListNode(node3);
 }
 
