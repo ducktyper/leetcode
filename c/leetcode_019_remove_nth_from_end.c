@@ -1,8 +1,3 @@
-struct ListNode {
-    int val;
-    struct ListNode *next;
-};
-
 /**
  * SOURCE: https://leetcode.com/problems/remove-nth-node-from-end-of-list
  *
@@ -22,8 +17,9 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
         current = current -> next;
         target  = target -> next;
     }
-
+    struct ListNode * toDelete = target -> next;
     target -> next = target -> next -> next;
+    free(toDelete);
 
     return pre.next;
 }

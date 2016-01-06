@@ -49,16 +49,6 @@ long listNodeToNum(struct ListNode * node)
     return atoll(&nums[i]);
 }
 
-void freeListNode(struct ListNode * node)
-{
-    while (node)
-    {
-        struct ListNode * current = node;
-        node = node -> next;
-        free(current);
-    }
-}
-
 int assertAddTwoNumbers(long sum, long  a, long b)
 {
     struct ListNode * list_node_a = numToListNode(a);

@@ -1,8 +1,3 @@
-struct ListNode {
-    int val;
-    struct ListNode *next;
-};
-
 /**
  * SOURCE: https://leetcode.com/problems/add-two-numbers
  *
