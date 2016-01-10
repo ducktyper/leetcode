@@ -24,8 +24,8 @@ int helperAssertString(char * expect, char * actual);
 /* Array */
 int countArrayInString(char * array); /* [1,2] => 2 */
 int countArrayOfArrayInString(char * array); /* [[1],[2]] => 2 */
-int * stringToIntArray(char * string);
-char ** stringToStringArray(char * string);
+int * stringToIntArray(char * string, int * returnSize);
+char ** stringToStringArray(char * string, int * returnSize);
 char * intArrayToString(int * array, int size);
 char * intArrayOfArrayToString(int ** array, int arraySize, int arrayInSize);
 char * stringArrayToString(char ** array, int size);

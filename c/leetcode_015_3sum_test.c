@@ -17,8 +17,8 @@ int main()
 int assertThreeSum(char * expected, char * input)
 {
     int returnSize = 0;
-    int * nums = stringToIntArray(input);
-    int numsSize = countArrayInString(input);
+    int numsSize;
+    int * nums = stringToIntArray(input, &numsSize);
     int ** output = threeSum(nums, numsSize, &returnSize);
 
     char * actual = intArrayOfArrayToString(output, returnSize, 3);

@@ -14,8 +14,8 @@ int main()
 
 int assertTwoSum(char * expect, char * array, int target)
 {
-    int * nums = stringToIntArray(array);
-    int size = countArrayInString(array);
+    int size;
+    int * nums = stringToIntArray(array, &size);
     int * out = twoSum(nums, size, target);
     int status = 1;
     if (!assertIntArray(expect, out)) status = 0;

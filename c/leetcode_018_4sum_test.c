@@ -14,8 +14,8 @@ int main()
 int assertFourSum(char * expected, char * input, int target)
 {
     int returnSize = 0;
-    int * nums = stringToIntArray(input);
-    int numsSize = countArrayInString(input);
+    int numsSize;
+    int * nums = stringToIntArray(input, &numsSize);
     int ** output = fourSum(nums, numsSize, target, &returnSize);
 
     char * actual = intArrayOfArrayToString(output, returnSize, 4);

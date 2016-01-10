@@ -38,10 +38,9 @@ int main()
 
 int assertMedianSortedArrays(double median, char * array1, char * array2)
 {
-    int * nums1 = stringToIntArray(array1);
-    int size1   = countArrayInString(array1);
-    int * nums2 = stringToIntArray(array2);
-    int size2   = countArrayInString(array2);
+    int size1, size2;
+    int * nums1 = stringToIntArray(array1, &size1);
+    int * nums2 = stringToIntArray(array2, &size2);
     int status = 1;
     if (!assertDouble(median, findMedianSortedArrays(nums1, size1, nums2, size2)))
         status = 0;

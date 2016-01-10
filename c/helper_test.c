@@ -22,13 +22,15 @@ int main()
     assertInt(1, countArrayInString("[1]"));
     assertInt(2, countArrayInString("[1,2]"));
 
-    int * array1 = stringToIntArray("[1,2,-3]");
-    char * array1String = intArrayToString(array1, 3);
+    int array1Size;
+    int * array1 = stringToIntArray("[1,2,-3]", &array1Size);
+    char * array1String = intArrayToString(array1, array1Size);
     assertIntArray(array1String, array1);
     printf("\nExpected fail at line 29");
     assertIntArray("[1,2,-3,5]", array1);
-    char ** stringArray1 = stringToStringArray("[a,b]");
-    char * stringArray1string = stringArrayToString(stringArray1, 2);
+    int stringArray1Size;
+    char ** stringArray1 = stringToStringArray("[a,b]", &stringArray1Size);
+    char * stringArray1string = stringArrayToString(stringArray1, stringArray1Size);
     assertString("[a,b]", stringArray1string);
     free(array1);
     free(array1String);

@@ -12,8 +12,8 @@ int main()
 
 int assertThreeSumClosest(int expected, char * numsString, int target)
 {
-    int * nums = stringToIntArray(numsString);
-    int numsSize = countArrayInString(numsString);
+    int numsSize;
+    int * nums = stringToIntArray(numsString, &numsSize);
     int status = 1;
     if (!assertInt(expected, threeSumClosest(nums, numsSize, target))) status = 0;
     return status;

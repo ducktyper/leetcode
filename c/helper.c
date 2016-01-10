@@ -56,17 +56,17 @@ int countArrayOfArrayInString(char * array)
     {
         if      (*array == '[') ignore = 1;
         else if (*array == ']') ignore = 0;
-        else if (*array == ',' && !ignore) size ++;
+        else if (*array == ',' && !ignore) size++;
         array++;
     }
     return size;
 }
 
-int * stringToIntArray(char * string)
+int * stringToIntArray(char * string, int * returnSize)
 {
     if (strlen(string) == 2) return NULL;
-    int size = countArrayInString(string);
-    int * out = (int *)malloc(sizeof(int) * size);
+    *returnSize = countArrayInString(string);
+    int * out = (int *)malloc(sizeof(int) * (*returnSize));
     char num[15];
     int i = 0, j = 0;
     if (string[0] != '[' || string[strlen(string) - 1] != ']')
@@ -98,11 +98,11 @@ int * stringToIntArray(char * string)
     return out;
 }
 
-char ** stringToStringArray(char * string)
+char ** stringToStringArray(char * string, int * returnSize)
 {
     if (strlen(string) == 2) return NULL;
-    int size = countArrayInString(string);
-    char ** out = (char **)malloc(sizeof(char **) * size);
+    *returnSize = countArrayInString(string);
+    char ** out = (char **)malloc(sizeof(char **) * (*returnSize));
     char tmp[15];
     int i = 0, j = 0;
     if (string[0] != '[' || string[strlen(string) - 1] != ']')
@@ -153,7 +153,7 @@ char * intArrayToString(int * array, int size)
         strcpy(&out[p], &nums[i * 15]);
         p += strlen(&nums[i * 15]);
         out[p] = ',';
-        p ++;
+        p++;
     }
     out[0] = '[';
     out[length - 2] = ']';
@@ -226,8 +226,8 @@ int helperAssertIntArray(char * expect, int * actual)
 
 struct ListNode * stringToListNode(char * listNodeString)
 {
-    int * array   = stringToIntArray(listNodeString);
-    int arraySize = countArrayInString(listNodeString);
+    int arraySize;
+    int * array   = stringToIntArray(listNodeString, &arraySize);
 
     struct ListNode base = {0, NULL};
     struct ListNode * prev = &base;

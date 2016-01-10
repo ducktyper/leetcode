@@ -10,8 +10,8 @@ int main()
 
 int assertMaxArea(int max, char * array)
 {
-    int * heights = stringToIntArray(array);
-    int heightSize = countArrayInString(array);
+    int heightSize;
+    int * heights = stringToIntArray(array, &heightSize);
     int status = 1;
     if (!assertInt(max, maxArea(heights, heightSize))) status = 0;
     free(heights);
