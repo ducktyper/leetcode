@@ -64,6 +64,7 @@ int countArrayOfArrayInString(char * array)
 
 int * stringToIntArray(char * string, int * returnSize)
 {
+    *returnSize = 0;
     if (strlen(string) == 2) return NULL;
     *returnSize = countArrayInString(string);
     int * out = (int *)malloc(sizeof(int) * (*returnSize));
