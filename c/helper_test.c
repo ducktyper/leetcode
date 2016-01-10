@@ -48,5 +48,12 @@ int main()
     char * node3String = listNodeToString(node3);
     assertString("[1,2,3]", node3String);
     freeListNode(node3);
+
+    int listNodeOfListNode4Size;
+    struct ListNode ** nodeList4 = stringToListNodeOfListNode("[[1,2],[3,4]]", &listNodeOfListNode4Size);
+    char * nodeList4String = listNodeOfListNodeToString(nodeList4, 2);
+    assertString("[[1,2],[3,4]]", nodeList4String);
+    freeListNodeOfListNode(nodeList4, listNodeOfListNode4Size);
+    free(nodeList4String);
 }
 

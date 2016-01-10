@@ -33,8 +33,10 @@ void freeStringArray(char ** array, int size);
 int helperAssertIntArray(char * expect, int * actual);
 
 /* ListNode */
-struct ListNode * stringToListNode(char * arrayString);
+struct ListNode * stringToListNode(char * listNodeString);
+struct ListNode ** stringToListNodeOfListNode(char * listNodeOfListNodeString, int * returnSize);
 char * listNodeToString(struct ListNode * head);
+char * listNodeOfListNodeToString(struct ListNode ** listNodeOfListNode, int size);
 void freeListNode(struct ListNode * node);
 
 /* Other */

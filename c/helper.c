@@ -224,10 +224,10 @@ int helperAssertIntArray(char * expect, int * actual)
     return status;
 }
 
-struct ListNode * stringToListNode(char * arrayString)
+struct ListNode * stringToListNode(char * listNodeString)
 {
-    int * array   = stringToIntArray(arrayString);
-    int arraySize = countArrayInString(arrayString);
+    int * array   = stringToIntArray(listNodeString);
+    int arraySize = countArrayInString(listNodeString);
 
     struct ListNode base = {0, NULL};
     struct ListNode * prev = &base;
@@ -242,6 +242,30 @@ struct ListNode * stringToListNode(char * arrayString)
 
     free(array);
     return base.next;
+}
+
+struct ListNode ** stringToListNodeOfListNode(char * str, int * returnSize)
+{
+    *returnSize = countArrayOfArrayInString(str);
+    struct ListNode ** out = malloc(sizeof(struct ListNode **) * (*returnSize));
+    int j = 0;
+    if (*returnSize == 0) return out;
+
+    int length = strlen(str), start;
+    for(int i = 1; i < length - 1; i++)
+    {
+        if (str[i] == '[') start = i;
+        else if (str[i] == ']')
+        {
+            // char sub[i - start + 2];
+            char * sub = malloc(sizeof(char) * (i - start + 2));
+            memcpy(sub, &str[start], sizeof(char) * (i - start + 1));
+            sub[i - start + 1] = '\0';
+            out[j++] = stringToListNode(sub);
+            free(sub);
+        }
+    }
+    return out;
 }
 
 char * listNodeToString(struct ListNode * head)
@@ -261,6 +285,32 @@ char * listNodeToString(struct ListNode * head)
     return intArrayToString(intArray, size);
 }
 
+char * listNodeOfListNodeToString(struct ListNode ** listNodeOfListNode, int size)
+{
+    char * lists[size];
+    int length = 3;
+    for(int i = 0; i < size; i++)
+    {
+        lists[i] = listNodeToString(listNodeOfListNode[i]);
+        length += strlen(lists[i]);
+    }
+    if (size) length += size - 1;
+    char * out = malloc(sizeof(char) * length);
+    int j = 1;
+    for(int i = 0; i < size; i++)
+    {
+        int l = strlen(lists[i]);
+        memcpy(&out[j], lists[i], sizeof(char) * l);
+        j += l;
+        out[j++] = ',';
+        free(lists[i]);
+    }
+    out[0] = '[';
+    out[length - 2] = ']';
+    out[length - 1] = '\0';
+    return out;
+}
+
 void freeListNode(struct ListNode * node)
 {
     while (node)
@@ -269,6 +319,12 @@ void freeListNode(struct ListNode * node)
         node = node -> next;
         free(current);
     }
+}
+
+void freeListNodeOfListNode(struct ListNode ** node, int size)
+{
+    for (int i = 0; i < size; i++) freeListNode(node[i]);
+    free(node);
 }
 
 int helperPrint(char * file, int line)
