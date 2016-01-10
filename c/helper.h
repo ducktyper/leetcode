@@ -38,6 +38,7 @@ struct ListNode ** stringToListNodeOfListNode(char * listNodeOfListNodeString, i
 char * listNodeToString(struct ListNode * head);
 char * listNodeOfListNodeToString(struct ListNode ** listNodeOfListNode, int size);
 void freeListNode(struct ListNode * node);
+void freeListNodeOfListNode(struct ListNode ** node, int size);
 
 /* Other */
 int helperPrint(char * file, int line);
