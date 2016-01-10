@@ -1,8 +1,18 @@
 #!/bin/bash
 
+if [ "$1" = "-a" ]; then
+    for line in $(find leetcode_*_test.c); do
+        echo "\n$line "
+        gcc -Wall helper.c $line && ./a.out
+    done
+    echo ''
+    exit 0
+fi
+
 if [ "$1" = "helper" ]; then
-  gcc -Wall helper.c helper_test.c && ./a.out
-  exit 0
+    gcc -Wall helper.c helper_test.c && ./a.out
+    echo ''
+    exit 0
 fi
 
 file=$(find leetcode_$1*_test.c | head -n1)
