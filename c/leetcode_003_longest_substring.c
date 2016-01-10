@@ -1,5 +1,3 @@
-#include "helper.h"
-
 /**
  * SOURCE: https://leetcode.com/problems/longest-substring-without-repeating-characters
  */
